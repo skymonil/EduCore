@@ -44,6 +44,10 @@ cd EduCore
 ```bash
 chmod 700 setup.sh
 bash ./setup.sh
+
+or 
+
+npm run install-all
 ```
 
 ### 3. Run locally
@@ -51,6 +55,10 @@ bash ./setup.sh
 ```bash
 chmod 700 run.sh
 bash run.sh
+
+or 
+
+npm run dev
 ```
 
 ⚙️ Project Structure
