@@ -21,6 +21,7 @@
     "author": "Chirag Varu",
     "license": "MIT",
     "devDependencies": {
-        "@types/node": "^22.13.1"
+        "@types/node": "^22.13.1",
+        "@vitejs/plugin-react": "^4.7.0"
     }
 }
