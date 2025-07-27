@@ -1,4 +1,8 @@
-# 0.0.2 / 2025-7-23
+# 0.0.3 / 2025-07-24
+- Added EduCore logo in different compatibility
+- Frontend Fix: Login Page Error Fix
+
+# 0.0.2 / 2025-07-23
 - Added Login page  
 - ShadCN components added (Button, Card, input, label, tabs)
 - Added DarkMode to App
