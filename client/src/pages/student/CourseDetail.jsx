@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useGetCourseDetailWithStatusQuery } from "@/features/api/purchaseApi";
-import { BadgeInfo, Lock, PlayCircle } from "lucide-react";
+import { BadgeInfo, Lock, PlayCircle, Unlock } from "lucide-react";
 import React from "react";
 import ReactPlayer from "react-player";
 import { useNavigate, useParams } from "react-router-dom";
@@ -41,7 +41,7 @@ const CourseDetail = () => {
           <h1 className="font-bold text-2xl md:text-3xl">
             {course?.courseTitle}
           </h1>
-          <p className="text-base md:text-lg">Course Sub-title</p>
+          <p className="text-base md:text-lg">{course?.subTitle}</p>
           <p>
             Created By{" "}
             <span className="text-[#C0C4FC] underline italic">
@@ -65,13 +65,13 @@ const CourseDetail = () => {
           <Card>
             <CardHeader>
               <CardTitle>Course Content</CardTitle>
-              <CardDescription>4 lectures</CardDescription>
+              <CardDescription>{course.lectures.length} leacture{course.lectures.length !== 1 ? 's' : ''}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               {course.lectures.map((lecture, idx) => (
                 <div key={idx} className="flex items-center gap-3 text-sm">
                   <span>
-                    {true ? <PlayCircle size={14} /> : <Lock size={14} />}
+                    {lecture.isPreviewFree ? <Unlock size={14} /> : lecture.isFree ? <PlayCircle size={14} /> : <Lock size={14} />}
                   </span>
                   <p>{lecture.lectureTitle}</p>
                 </div>
@@ -90,7 +90,7 @@ const CourseDetail = () => {
                   controls={true}
                 />
               </div>
-              <h1>Lecture title</h1>
+              <h1>{course.lectures[0].lectureTitle}</h1>
               <Separator className="my-2" />
               <h1 className="text-lg md:text-xl font-semibold">Course Price</h1>
             </CardContent>

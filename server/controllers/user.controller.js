@@ -13,22 +13,24 @@ export const register = async (req,res) => {
                 message:"All fields are required."
             })
         }
-        const user = await User.findOne({email});
-        if(user){
+        const existingUser = await User.findOne({email});
+        if(existingUser){
             return res.status(400).json({
                 success:false,
                 message:"User already exist with this email."
             })
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        await User.create({
+        const user = await User.create({
             name,
             email,
             password:hashedPassword
         });
+        generateToken(res, user, "Account created successfully");
         return res.status(201).json({
             success:true,
-            message:"Account created successfully."
+            message:"Account created successfully.",
+            user
         })
     } catch (error) {
         console.log(error);
