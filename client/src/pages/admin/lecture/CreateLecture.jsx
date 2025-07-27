@@ -29,6 +29,7 @@ const CreateLecture = () => {
 
   const createLectureHandler = async () => {
     await createLecture({ lectureTitle, courseId });
+    setLectureTitle("");
   };
 
   useEffect(() => {

@@ -26,6 +26,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLogoutUserMutation } from "@/features/api/authApi";
 import { toast } from "sonner";
 import { useSelector } from "react-redux";
+import EduCore_Logo from "../assets/logoImg.png";
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
@@ -48,6 +49,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto hidden md:flex justify-between items-center gap-10 h-full">
         <div className="flex items-center gap-2">
           {/* <School size={"30"} /> */}
+          <img src={EduCore_Logo} alt="" className="w-11" />
           <Link to="/">
             <h1 className="hidden md:block font-extrabold text-2xl">
               EduCore
