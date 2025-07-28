@@ -4,7 +4,9 @@
     "description": "EduCore is a comprehensive educational platform designed to facilitate learning and teaching through a variety of tools and resources.",
     "scripts": {
         "dev": "node start-dev.js",
-        "install-all": "node install-deps.js"
+        "install-all": "node install-deps.js",
+         "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+        "start": "npm run start --prefix server"
     },
     "repository": {
         "type": "git",
