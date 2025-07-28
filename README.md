@@ -51,7 +51,13 @@ or
 npm run install-all
 ```
 
-### 3. Run locally
+### 3. Run Seed File
+
+```bash
+npm run seed
+```
+
+### 4. Run locally
 
 ```bash
 chmod 700 run.sh
