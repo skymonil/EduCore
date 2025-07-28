@@ -12,11 +12,29 @@ export const createCourse = async (req,res) => {
             })
         }
 
-        const course = await Course.create({
+        let courseThumbnail;
+        if(req.file) {
+            try {
+                courseThumbnail = await uploadMedia(req.file.path);
+            } catch (uploadError) {
+                console.error("Failed to upload thumbnail:", uploadError);
+                return res.status(500).json({
+                    message: "Failed to upload course thumbnail"
+                });
+            }
+        }
+
+        const courseData = {
             courseTitle,
             category,
             creator:req.id
-        });
+        };
+
+        if(courseThumbnail) {
+            courseData.courseThumbnail = courseThumbnail.secure_url;
+        }
+
+        const course = await Course.create(courseData);
 
         return res.status(201).json({
             course,
@@ -122,13 +140,20 @@ export const editCourse = async (req,res) => {
             })
         }
         let courseThumbnail;
-        if(thumbnail){
-            if(course.courseThumbnail){
-                const publicId = course.courseThumbnail.split("/").pop().split(".")[0];
-                await deleteMediaFromCloudinary(publicId); // delete old image
+        if(req.file){
+            try {
+                if(course.courseThumbnail){
+                    const publicId = course.courseThumbnail.split("/").pop().split(".")[0];
+                    await deleteMediaFromCloudinary(publicId); // delete old image
+                }
+                // upload a thumbnail on cloudinary
+                courseThumbnail = await uploadMedia(req.file.path);
+            } catch (uploadError) {
+                console.error("Image upload failed:", uploadError);
+                return res.status(500).json({
+                    message: "Failed to upload course thumbnail"
+                });
             }
-            // upload a thumbnail on clourdinary
-            courseThumbnail = await uploadMedia(thumbnail.path);
         }
 
  
