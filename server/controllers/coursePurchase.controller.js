@@ -146,12 +146,17 @@ export const getCourseDetailWithPurchaseStatus = async (req, res) => {
       .populate({ path: "creator" })
       .populate({ path: "lectures" });
 
-    const purchased = await CoursePurchase.findOne({
-      userId,
-      courseId,
-      status: "completed" // Only consider completed purchases
-    });
-    console.log(purchased);
+    const [purchased, isEnrolled] = await Promise.all([
+      CoursePurchase.findOne({
+        userId,
+        courseId,
+        status: "completed"
+      }),
+      Course.exists({
+        _id: courseId,
+        enrolledStudents: userId
+      })
+    ]);
 
     if (!course) {
       return res.status(404).json({ message: "course not found!" });
@@ -159,7 +164,7 @@ export const getCourseDetailWithPurchaseStatus = async (req, res) => {
 
     return res.status(200).json({
       course,
-      purchased: !!purchased, // true if purchased, false otherwise
+      purchased: !!purchased || isEnrolled, // true if purchased OR enrolled
     });
   } catch (error) {
     console.log(error);
