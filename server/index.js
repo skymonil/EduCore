@@ -10,6 +10,7 @@ import purchaseRoute from "./routes/purchaseCourse.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js";
 import path from "path";
 import job from "./utils/cron.js";
+import helmet from "helmet";
 
 dotenv.config({});
 
@@ -23,6 +24,7 @@ const __dirname = path.resolve();
 // default middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(helmet());
 
 app.use(cors({
     origin:"http://localhost:5173",
