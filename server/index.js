@@ -9,6 +9,7 @@ import mediaRoute from "./routes/media.route.js";
 import purchaseRoute from "./routes/purchaseCourse.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js";
 import path from "path";
+import job from "./utils/cron.js";
 
 dotenv.config({});
 
@@ -27,8 +28,13 @@ app.use(cors({
     origin:"http://localhost:5173",
     credentials:true
 }));
- 
+
+app.get("/healthcheck", (req, res) => {
+  res.status(200).send("Server is healthy");
+});
+
 // apis
+job.start();
 app.use("/api/v1/media", mediaRoute);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/course", courseRoute);
