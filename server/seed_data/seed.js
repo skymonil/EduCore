@@ -14,9 +14,7 @@ const seed = async () => {
     console.log('✅ Connected to MongoDB');
 
     // Clean old data
-    await User.deleteMany({});
-    await Course.deleteMany({});
-    await Lecture.deleteMany({});
+
 
     // Step 1: Create 5 users
     const users = await User.insertMany([
