@@ -25,7 +25,8 @@ Project is currently in the initial development phase. The MVP features and UI c
 
 **Frontend:** Vite, React, TypeScript, Tailwind CSS  
 **Backend:** Node.js, Express.js, TypeScript
-**Database:** Coming soon (MongoDB planned)  
+**Database:** MongoDB Atlas
+**Payment Gateway:** Stripe
 **Authentication:** To be implemented (e.g., OAuth 2.0 )
 
 ---
@@ -67,6 +68,8 @@ EduCore/
 ├── client/    → Vite + React + TS + Tailwind (frontend)
 └── server/    → Node + Express + TS (backend)
 ```
+
+## Live Link: https://educore-oj6e.onrender.com/ (MVP Deployment)
 
 ---
 
