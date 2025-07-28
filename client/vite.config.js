@@ -12,4 +12,9 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react", "react-dom"],
   },
+  build: {
+    outDir: path.resolve(__dirname, 'dist'),
+    emptyOutDir: true,
+    chunkSizeWarningLimit: 1000, 
+  },
 });
