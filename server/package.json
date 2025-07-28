@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "seed": "ts-node seed_data/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -27,5 +28,10 @@
     "multer": "^1.4.5-lts.1",
     "nodemon": "^3.1.7",
     "stripe": "^17.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
