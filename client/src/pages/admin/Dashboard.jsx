@@ -10,8 +10,7 @@ const Dashboard = () => {
   if(isLoading) return <h1>Loading...</h1>
   if(isError) return <h1 className="text-red-500">Failed to get purchased course</h1>
 
-  //
-  const {purchasedCourse} = data || [];
+  const purchasedCourse = data?.purchasedCourse || [];
 
   const courseData = purchasedCourse.map((course)=> ({
     name:course.courseId.courseTitle,

@@ -166,13 +166,25 @@ export const getCourseDetailWithPurchaseStatus = async (req, res) => {
   }
 };
 
-export const getAllPurchasedCourse = async (_, res) => {
+export const getAllPurchasedCourse = async (req, res) => {
   try {
     const purchasedCourse = await CoursePurchase.find({
       status: "completed",
-    }).populate("courseId");
-    if (!purchasedCourse) {
-      return res.status(404).json({
+    })
+      .populate({
+        path: "courseId",
+        populate: {
+          path: "creator",
+          select: "username email"
+        }
+      })
+      .populate({
+        path: "userId",
+        select: "username email"
+      });
+
+    if (!purchasedCourse || purchasedCourse.length === 0) {
+      return res.status(200).json({
         purchasedCourse: [],
       });
     }
