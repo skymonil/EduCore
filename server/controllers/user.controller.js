@@ -1,6 +1,6 @@
 import {User} from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-import { generateToken } from "../utils/generateToken.js";
+import { generateTokens } from "../utils/generateToken.js";
 import { deleteMediaFromCloudinary, uploadMedia } from "../utils/cloudinary.js";
 import { validateRegistration, validatelogin } from '../utils/validation.js';
 import logger from '../utils/logger.js';
@@ -36,7 +36,7 @@ export const register = async (req,res) => {
             email,
             password:hashedPassword
         });
-        generateToken(res, user, "Account created successfully");
+        
         return res.status(201).json({
             success:true,
             message:"Account created successfully.",
@@ -66,24 +66,40 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
 
-
-
     const user = await User.findOne({ email });
     if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(400).json({
+         logger.warn(`Login attempt failed for email: ${email}`);
+      return res.status(401).json({
         success: false,
         message: "Incorrect email or password",
       });
     }
 
     
-    generateToken(res, user);
+     const { accessToken, refreshToken } = await generateTokens(user);
+
+     res.cookie("accessToken", accessToken, {
+            httpOnly: true, // Prevents client-side JavaScript from accessing the cookie (XSS protection)
+            secure: process.env.NODE_ENV === 'production', // Only send over HTTPS in production
+            sameSite: 'Lax', // Mitigates CSRF attacks (prevents sending cookie with cross-site requests unless it's a top-level navigation)
+            maxAge: 3 * 60 * 1000, // 3 minutes for access token (matches expiresIn in generateTokens)
+            path: '/', // Accessible from all paths
+        });
+
+        // Set Refresh Token in a separate HTTP-only cookie
+        res.cookie("refreshToken", refreshToken, {
+            httpOnly: true, // Prevents client-side JavaScript from accessing the cookie (XSS protection)
+            secure: process.env.NODE_ENV === 'production', // Only send over HTTPS in production
+            sameSite: 'Lax', // Mitigates CSRF attacks
+            maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days for refresh token (matches expiry in generateTokens)
+            path: '/api/auth/refresh', // Only accessible by your refresh token endpoint (more secure)
+        });
 
     return res.status(200).json({
       success: true,
       message: `Welcome back ${user.name}`,
       user,
-    });
+    })
 
   } catch (error) {
     console.error("Login error:", error);

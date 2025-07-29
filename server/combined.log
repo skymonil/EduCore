@@ -60,3 +60,105 @@
 {"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:23:31.179Z"}
 {"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T08:23:31.184Z"}
 {"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:23:31.185Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T08:54:44.119Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:54:44.123Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T08:54:44.136Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:54:44.137Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T08:56:14.602Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:56:14.602Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T08:56:14.643Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:56:14.643Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T08:56:15.334Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:56:15.335Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T08:56:15.370Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:56:15.370Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:08:58.345Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:08:58.345Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:08:58.413Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:08:58.413Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:18:44.365Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:18:44.365Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:18:44.393Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:18:44.393Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T10:27:51.520Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:21.166Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:21.166Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:21.232Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:21.232Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T10:29:24.401Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:29.712Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:29.712Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:29.722Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:29.723Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T10:29:31.694Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:32.597Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:32.597Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:32.615Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:32.616Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T10:29:34.345Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:35.358Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:35.359Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:35.375Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:35.376Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T10:29:46.313Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:51.138Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:51.138Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T10:29:51.147Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T10:29:51.147Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:45:19.429Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:45:19.431Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:45:19.459Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:45:19.460Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T12:45:20.670Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:45:36.830Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:45:36.831Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:48:23.876Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:48:23.879Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:48:25.355Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:48:25.356Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:48:25.946Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:48:25.947Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:48:26.190Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:48:26.190Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:48:26.423Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:48:26.425Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:48:26.810Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:48:26.811Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:48:27.033Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:48:27.034Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:48:27.263Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:48:27.264Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:50:45.290Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:50:45.291Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:51:25.965Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:51:25.967Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:51:49.627Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:51:49.627Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:51:49.706Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:51:49.707Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:52:18.559Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:52:18.559Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:55:02.467Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:55:02.470Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:55:02.503Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:55:02.504Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:56:21.583Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:56:21.583Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:56:21.646Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:56:21.646Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T12:56:25.178Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:56:28.834Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:56:28.835Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:56:29.814Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:56:29.814Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:56:36.434Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:56:36.434Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T12:56:36.467Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T12:56:36.468Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T12:56:51.669Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:56:55.104Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:56:55.105Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:57:14.023Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:57:14.023Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T12:57:23.798Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"monilparikh11@gmail.com\",\n  \"password\": \"Monil@12345\"\n}","timestamp":"2025-07-29T12:57:23.799Z"}
