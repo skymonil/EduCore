@@ -2,18 +2,28 @@ import {User} from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/generateToken.js";
 import { deleteMediaFromCloudinary, uploadMedia } from "../utils/cloudinary.js";
+import { validateRegistration, validatelogin } from '../utils/validation.js';
+import logger from '../utils/logger.js';
+
 
 export const register = async (req,res) => {
     try {
-       
-        const {name, email, password} = req.body; // patel214
-        if(!name || !email || !password){
+         logger.info('Registration endpoint Hit')
+         logger.info(`Request body: ${JSON.stringify(req.body, null, 2)}`);
+        
+       const {error} = validateRegistration(req.body)
+
+        
+        if(error){
+            logger.warn('Validation Error',error.details[0].message)
             return res.status(400).json({
-                success:false,
-                message:"All fields are required."
+                success: false,
+                message: error.details[0].message
             })
         }
+        const {name, email, password} = req.body; // patel214
         const existingUser = await User.findOne({email});
+
         if(existingUser){
             return res.status(400).json({
                 success:false,
@@ -40,41 +50,54 @@ export const register = async (req,res) => {
         })
     }
 }
-export const login = async (req,res) => {
-    try {
-        const {email, password} = req.body;
-        if(!email || !password){
+export const login = async (req, res) => {
+  try {
+     logger.info('Login endpoint Hit')
+     logger.info(`Request body: ${JSON.stringify(req.body, null, 2)}`);
+      const {error} = validatelogin(req.body)
+      if(error){
+            logger.warn('Validation Error',error.details[0].message)
             return res.status(400).json({
-                success:false,
-                message:"All fields are required."
+                success: false,
+                message: error.details[0].message
             })
         }
-        const user = await User.findOne({email});
-        if(!user){
-            return res.status(400).json({
-                success:false,
-                message:"Incorrect email or password"
-            })
-        }
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
-        if(!isPasswordMatch){
-            return res.status(400).json({
-                success:false,
-                message:"Incorrect email or password"
-            });
-        }
-        generateToken(res, user, `Welcome back ${user.name}`);
 
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            success:false,
-            message:"Failed to login"
-        })
+    const { email, password } = req.body;
+
+
+
+
+    const user = await User.findOne({ email });
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(400).json({
+        success: false,
+        message: "Incorrect email or password",
+      });
     }
-}
+
+    
+    generateToken(res, user);
+
+    return res.status(200).json({
+      success: true,
+      message: `Welcome back ${user.name}`,
+      user,
+    });
+
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to login",
+    });
+  }
+};
+
 export const logout = async (_,res) => {
     try {
+        logger.info('Logout endpoint Hit')
+     logger.info(`Request body: ${JSON.stringify(req.body, null, 2)}`);
         return res.status(200).cookie("token", "", {maxAge:0}).json({
             message:"Logged out successfully.",
             success:true
@@ -89,6 +112,8 @@ export const logout = async (_,res) => {
 }
 export const getUserProfile = async (req,res) => {
     try {
+        logger.info('getUserProfile endpoint Hit')
+     logger.info(`Request body: ${JSON.stringify(req.body, null, 2)}`);
         const userId = req.id;
         const user = await User.findById(userId).select("-password").populate("enrolledCourses");
         if(!user){
@@ -111,6 +136,8 @@ export const getUserProfile = async (req,res) => {
 }
 export const updateProfile = async (req,res) => {
     try {
+        logger.info('updateProfile endpoint Hit')
+     logger.info(`Request body: ${JSON.stringify(req.body, null, 2)}`);
         const userId = req.id;
         const {name} = req.body;
         const profilePhoto = req.file;
