@@ -69,3 +69,10 @@
 {"level":"info","message":"Request body: {}","timestamp":"2025-07-29T13:59:58.485Z"}
 {"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T13:59:58.594Z"}
 {"level":"info","message":"Request body: {}","timestamp":"2025-07-29T13:59:58.595Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T14:18:17.134Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T14:18:17.139Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T14:18:17.224Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T14:18:17.240Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T14:18:19.034Z"}
+{"level":"info","message":"Login endpoint Hit","timestamp":"2025-07-29T14:18:28.782Z"}
+{"level":"info","message":"Request body: {\n  \"email\": \"chiragvaru03@gmail.com\",\n  \"password\": \"password\"\n}","timestamp":"2025-07-29T14:18:28.782Z"}
