@@ -60,3 +60,12 @@
 {"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:23:31.179Z"}
 {"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T08:23:31.184Z"}
 {"level":"info","message":"Request body: {}","timestamp":"2025-07-29T08:23:31.185Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T13:59:41.401Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T13:59:41.407Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T13:59:41.499Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T13:59:41.501Z"}
+{"level":"info","message":"Logout endpoint Hit","timestamp":"2025-07-29T13:59:47.158Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T13:59:58.483Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T13:59:58.485Z"}
+{"level":"info","message":"getUserProfile endpoint Hit","timestamp":"2025-07-29T13:59:58.594Z"}
+{"level":"info","message":"Request body: {}","timestamp":"2025-07-29T13:59:58.595Z"}
