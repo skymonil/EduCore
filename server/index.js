@@ -11,7 +11,7 @@ import courseProgressRoute from "./routes/courseProgress.route.js";
 import path from "path";
 import job from "./utils/cron.js";
 import helmet from "helmet";
-
+import mongoSanitize from 'express-mongo-sanitize';
 dotenv.config({});
 
 // call database connection here
@@ -24,6 +24,7 @@ const __dirname = path.resolve();
 // default middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(mongoSanitize());
 app.use(helmet());
 
 app.use(cors({

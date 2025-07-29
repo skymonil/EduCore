@@ -5,6 +5,7 @@ import {deleteMediaFromCloudinary, deleteVideoFromCloudinary, uploadMedia} from 
 
 export const createCourse = async (req,res) => {
     try {
+        
         const {courseTitle, category} = req.body;
         if(!courseTitle || !category) {
             return res.status(400).json({

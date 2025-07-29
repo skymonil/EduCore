@@ -12,7 +12,7 @@ dist
 
 # Env
 .env
-
+.log
 
 # dependencies
 /node_modules
