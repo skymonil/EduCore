@@ -4,6 +4,9 @@
 node_modules
 dist
 
+# log file
+combined.log
+error.log
 # Vite
 .vite
 
