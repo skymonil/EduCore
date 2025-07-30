@@ -48,4 +48,4 @@ node_modules
 # cursor
 
 .cursor/
-bun.lockb
+bun.lock
