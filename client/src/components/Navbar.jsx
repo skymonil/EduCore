@@ -137,9 +137,21 @@ const MobileNavbar = ({user}) => {
         </SheetHeader>
         <Separator className="mr-2" />
         <nav className="flex flex-col space-y-4">
-          <Link to="/my-learning">My Learning</Link>
-          <Link to="/profile">Edit Profile</Link>
-          <p>Log out</p>
+          {user ? (
+            <>
+              <Link to="/my-learning">My Learning</Link>
+              <Link to="/profile">Edit Profile</Link>
+              <p onClick={() => {
+                document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                navigate("/login");
+              }}>Log out</p>
+            </>
+          ) : (
+            <>
+              <p onClick={() => navigate("/login")}>Login</p>
+              <p onClick={() => navigate("/login")}>Signup</p>
+            </>
+          )}
         </nav>
         {user?.role === "instructor" && (
           <SheetFooter>
