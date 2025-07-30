@@ -70,9 +70,7 @@ const Login = () => {
     }
     if (registerError) {
       toast.error(
-        registerError?.data?.message ||
-        registerError?.error ||
-        "Signup Failed"
+        registerError?.data?.message || registerError?.error || "Signup Failed"
       );
     }
     if (loginIsSuccess && loginData) {
@@ -81,9 +79,7 @@ const Login = () => {
     }
     if (loginError) {
       toast.error(
-        loginError?.data?.message ||
-        loginError?.error ||
-        "Login Failed"
+        loginError?.data?.message || loginError?.error || "Login Failed"
       );
     }
   }, [
@@ -96,45 +92,60 @@ const Login = () => {
   ]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 p-4">
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-gray-800">Please enter your details</h1>
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            Please enter your details
+          </h1>
         </div>
-        
-        <Tabs value={activeTab} className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <TabsList className="grid w-full grid-cols-2 bg-gray-50">
-            <TabsTrigger 
-              value="signup" 
-              className="py-3 data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=inactive]:bg-slate-100"
+
+        <Tabs
+          value={activeTab}
+          className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden"
+        >
+          <TabsList className="grid w-full grid-cols-2 bg-gray-50 dark:bg-gray-800">
+            <TabsTrigger
+              value="signup"
+              className="py-3 text-sm sm:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 data-[state=active]:shadow-sm data-[state=inactive]:bg-slate-100 dark:data-[state=inactive]:bg-gray-700 dark:text-gray-100"
               onClick={() => setActiveTab("signup")}
             >
               Signup
             </TabsTrigger>
-            <TabsTrigger 
-              value="login" 
-              className="py-3 data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=inactive]:bg-slate-100"
+            <TabsTrigger
+              value="login"
+              className="py-3 text-sm sm:text-base data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 data-[state=active]:shadow-sm data-[state=inactive]:bg-slate-100 dark:data-[state=inactive]:bg-gray-700 dark:text-gray-100"
               onClick={() => setActiveTab("login")}
             >
               Login
             </TabsTrigger>
           </TabsList>
 
+          {/* SIGNUP TAB */}
           <TabsContent value="signup">
-            <Card className="border-0 shadow-none">
+            <Card className="border-0 shadow-none bg-transparent">
               <CardHeader>
-                <CardTitle className="text-xl">Create Account</CardTitle>
-                <CardDescription className="text-gray-500">
+                <CardTitle className="text-xl dark:text-gray-100">
+                  Create Account
+                </CardTitle>
+                <CardDescription className="text-gray-500 dark:text-gray-400">
                   Join our community today
                 </CardDescription>
               </CardHeader>
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                handleRegistration("signup");
-              }}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleRegistration("signup");
+                }}
+              >
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-gray-700">Full Name</Label>
+                    <Label
+                      htmlFor="name"
+                      className="text-gray-700 dark:text-gray-300"
+                    >
+                      Full Name
+                    </Label>
                     <Input
                       type="text"
                       name="name"
@@ -142,11 +153,16 @@ const Login = () => {
                       onChange={(e) => changeInputHandler(e, "signup")}
                       placeholder="John Doe"
                       required
-                      className="focus-visible:ring-blue-500"
+                      className="focus-visible:ring-blue-500 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-700">Email</Label>
+                    <Label
+                      htmlFor="email"
+                      className="text-gray-700 dark:text-gray-300"
+                    >
+                      Email
+                    </Label>
                     <Input
                       type="email"
                       name="email"
@@ -154,11 +170,16 @@ const Login = () => {
                       onChange={(e) => changeInputHandler(e, "signup")}
                       placeholder="john@example.com"
                       required
-                      className="focus-visible:ring-blue-500"
+                      className="focus-visible:ring-blue-500 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="password" className="text-gray-700">Password</Label>
+                    <Label
+                      htmlFor="password"
+                      className="text-gray-700 dark:text-gray-300"
+                    >
+                      Password
+                    </Label>
                     <div className="relative">
                       <Input
                         type="password"
@@ -167,10 +188,10 @@ const Login = () => {
                         onChange={(e) => changeInputHandler(e, "signup")}
                         placeholder="••••••••"
                         required
-                        className="focus-visible:ring-blue-500 pr-10"
+                        className="focus-visible:ring-blue-500 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 pr-10"
                       />
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       At least 8 characters with a number
                     </p>
                   </div>
@@ -179,7 +200,7 @@ const Login = () => {
                   <Button
                     type="submit"
                     disabled={registerIsLoading}
-                    className="w-full bg-blue-600 hover:bg-blue-700"
+                    className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
                   >
                     {registerIsLoading ? (
                       <>
@@ -190,12 +211,12 @@ const Login = () => {
                       "Sign Up"
                     )}
                   </Button>
-                  <p className="text-center text-sm text-gray-500">
+                  <p className="text-center text-sm text-gray-500 dark:text-gray-400">
                     Already have an account?{" "}
                     <button
                       type="button"
                       onClick={() => setActiveTab("login")}
-                      className="text-blue-600 hover:underline"
+                      className="text-blue-600 hover:underline dark:text-blue-400"
                     >
                       Log in
                     </button>
@@ -205,21 +226,31 @@ const Login = () => {
             </Card>
           </TabsContent>
 
+          {/* LOGIN TAB */}
           <TabsContent value="login">
-            <Card className="border-0 shadow-none">
+            <Card className="border-0 shadow-none bg-transparent">
               <CardHeader>
-                <CardTitle className="text-xl">Welcome Back</CardTitle>
-                <CardDescription className="text-gray-500">
+                <CardTitle className="text-xl dark:text-gray-100">
+                  Welcome Back
+                </CardTitle>
+                <CardDescription className="text-gray-500 dark:text-gray-400">
                   Enter your credentials to login
                 </CardDescription>
               </CardHeader>
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                handleRegistration("login");
-              }}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleRegistration("login");
+                }}
+              >
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-700">Email</Label>
+                    <Label
+                      htmlFor="email"
+                      className="text-gray-700 dark:text-gray-300"
+                    >
+                      Email
+                    </Label>
                     <Input
                       type="email"
                       name="email"
@@ -227,11 +258,16 @@ const Login = () => {
                       onChange={(e) => changeInputHandler(e, "login")}
                       placeholder="john@example.com"
                       required
-                      className="focus-visible:ring-blue-500"
+                      className="focus-visible:ring-blue-500 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="password" className="text-gray-700">Password</Label>
+                    <Label
+                      htmlFor="password"
+                      className="text-gray-700 dark:text-gray-300"
+                    >
+                      Password
+                    </Label>
                     <div className="relative">
                       <Input
                         type="password"
@@ -240,7 +276,7 @@ const Login = () => {
                         onChange={(e) => changeInputHandler(e, "login")}
                         placeholder="••••••••"
                         required
-                        className="focus-visible:ring-blue-500 pr-10"
+                        className="focus-visible:ring-blue-500 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 pr-10"
                       />
                     </div>
                   </div>
@@ -249,7 +285,7 @@ const Login = () => {
                   <Button
                     type="submit"
                     disabled={loginIsLoading}
-                    className="w-full bg-blue-600 hover:bg-blue-700"
+                    className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
                   >
                     {loginIsLoading ? (
                       <>
@@ -260,12 +296,12 @@ const Login = () => {
                       "Login"
                     )}
                   </Button>
-                  <p className="text-center text-sm text-gray-500">
+                  <p className="text-center text-sm text-gray-500 dark:text-gray-400">
                     Don't have an account?{" "}
                     <button
                       type="button"
                       onClick={() => setActiveTab("signup")}
-                      className="text-blue-600 hover:underline"
+                      className="text-blue-600 hover:underline dark:text-blue-400"
                     >
                       Sign up
                     </button>
