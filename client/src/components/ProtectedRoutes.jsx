@@ -1,8 +1,20 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLoadUserQuery } from "@/features/api/authApi";
 
 export const ProtectedRoute = ({children}) => {
     const {isAuthenticated} = useSelector(store=>store.auth);
+    const dispatch = useDispatch();
+    const { refetch } = useLoadUserQuery();
+
+    useEffect(() => {
+        // Check for token cookie on initial load
+        const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+        if (token && !isAuthenticated) {
+            refetch(); // This will dispatch userLoggedIn if token is valid
+        }
+    }, [isAuthenticated, refetch]);
 
     if(!isAuthenticated){
         return <Navigate to="/login"/>

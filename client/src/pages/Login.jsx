@@ -65,18 +65,26 @@ const Login = () => {
 
   useEffect(() => {
     if (registerIsSuccess && registerData) {
-      toast.success(registerData.message || "Signup successful.");
+      toast.success(registerData?.message || "Signup successful.");
       setActiveTab("login");
     }
     if (registerError) {
-      toast.error(registerError.data.message || "Signup Failed");
+      toast.error(
+        registerError?.data?.message ||
+        registerError?.error ||
+        "Signup Failed"
+      );
     }
     if (loginIsSuccess && loginData) {
-      toast.success(loginData.message || "Login successful.");
+      toast.success(loginData?.message || "Login successful.");
       navigate("/");
     }
     if (loginError) {
-      toast.error(loginError.data.message || "Login Failed");
+      toast.error(
+        loginError?.data?.message ||
+        loginError?.error ||
+        "Login Failed"
+      );
     }
   }, [
     loginIsLoading,
