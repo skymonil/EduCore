@@ -107,7 +107,7 @@ const Navbar = () => {
       </div>
       {/* Mobile device  */}
       <div className="flex md:hidden items-center justify-between px-4 h-full">
-        <h1 className="font-extrabold text-2xl">E-learning</h1>
+        <h1 className="font-extrabold text-2xl">EduCore</h1>
         <MobileNavbar user={user}/>
       </div>
     </div>
@@ -132,14 +132,26 @@ const MobileNavbar = ({user}) => {
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <SheetHeader className="flex flex-row items-center justify-between mt-2">
-          <SheetTitle> <Link to="/">E-Learning</Link></SheetTitle>
+          <SheetTitle> <Link to="/">EduCore</Link></SheetTitle>
           <DarkMode />
         </SheetHeader>
         <Separator className="mr-2" />
         <nav className="flex flex-col space-y-4">
-          <Link to="/my-learning">My Learning</Link>
-          <Link to="/profile">Edit Profile</Link>
-          <p>Log out</p>
+          {user ? (
+            <>
+              <Link to="/my-learning">My Learning</Link>
+              <Link to="/profile">Edit Profile</Link>
+              <p onClick={() => {
+                document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                navigate("/login");
+              }}>Log out</p>
+            </>
+          ) : (
+            <>
+              <p onClick={() => navigate("/login")}>Login</p>
+              <p onClick={() => navigate("/login")}>Signup</p>
+            </>
+          )}
         </nav>
         {user?.role === "instructor" && (
           <SheetFooter>
