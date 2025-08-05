@@ -12,6 +12,9 @@ import path from "path";
 import job from "./utils/cron.js";
 import helmet from "helmet";
 import mongoSanitize from 'express-mongo-sanitize';
+import morgan from "morgan"; 
+import csrf from "csurf";
+import rateLimit from "express-rate-limit";
 dotenv.config({});
 
 // call database connection here
@@ -22,8 +25,20 @@ const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve();
 
 // default middleware
+app.use(morgan('dev')); 
 app.use(express.json());
 app.use(cookieParser());
+
+const csrfProtection = csrf({
+  cookie: {
+    httpOnly: true,
+    sameSite: "Lax",
+    secure: process.env.NODE_ENV === "production"
+  },
+});
+
+app.use(csrfProtection);
+
 app.use(mongoSanitize());
 app.use(helmet());
 
