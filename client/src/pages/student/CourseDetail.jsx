@@ -23,9 +23,12 @@ const CourseDetail = () => {
     useGetCourseDetailWithStatusQuery(courseId);
 
   if (isLoading) return <h1>Loading...</h1>;
-  if (isError) return <h>Failed to load course details</h>;
+if (  !data || !data.course) {
+  console.error("Failed to load course details", { isError, data });
+  return <h1>Course not foudn or failed to load course detail</h1>;
+}
 
-  const { course, purchased } = data;
+const { course, purchased } = data;
   console.log(purchased);
 
   const handleContinueCourse = () => {

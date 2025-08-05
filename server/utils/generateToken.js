@@ -9,7 +9,7 @@ export const generateTokens = async(user) => {
   const accessToken = jwt.sign(
     { userId: user._id }, 
     process.env.SECRET_KEY, 
-    { expiresIn: '30s' }
+    { expiresIn: '60m' }
   );
 
   // Generate the refresh token as a JWT (long-lived)

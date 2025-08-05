@@ -6,13 +6,14 @@ import { validateRegistration, validatelogin } from '../utils/validation.js';
 import logger from '../utils/logger.js';
 import { RefreshToken } from "../models/refreshToken.js";
 import jwt from 'jsonwebtoken'
+import { csrfSynchronisedProtection, generateToken } from "../utils/csurfConfig.js";
 export const register = async (req,res) => {
     try {
          logger.info('Registration endpoint Hit')
          logger.info(`Request body: ${JSON.stringify(req.body, null, 2)}`);
         
        const {error} = validateRegistration(req.body)
-
+      
         
         if(error){
             logger.warn('Validation Error',error.details[0].message)
@@ -77,7 +78,7 @@ export const login = async (req, res) => {
 
     
      const { accessToken, refreshToken } = await generateTokens(user);
-
+    const csrfToken = generateToken(req)
      res.cookie("accessToken", accessToken, {
             httpOnly: true, // Prevents client-side JavaScript from accessing the cookie (XSS protection)
             secure: process.env.NODE_ENV === 'production', // Only send over HTTPS in production
@@ -99,6 +100,7 @@ export const login = async (req, res) => {
       success: true,
       message: `Welcome back ${user.name}`,
       user,
+      csrfToken
     })
 
   } catch (error) {
