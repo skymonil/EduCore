@@ -48,10 +48,12 @@ export const register = async (req, res) => {
     });
   }
 };
+
 export const login = async (req, res) => {
   try {
     logger.info("Login endpoint Hit");
     logger.info(`Request body: ${JSON.stringify(req.body, null, 2)}`);
+
     const { error } = validatelogin(req.body);
     if (error) {
       logger.warn("Validation Error", error.details[0].message);
@@ -72,9 +74,9 @@ export const login = async (req, res) => {
       });
     }
 
-    const { accessToken, refreshToken } = await generateTokens(user);
+    const { token, refreshToken } = await generateTokens(user);
 
-    res.cookie("accessToken", accessToken, {
+    res.cookie("token", token, {
       httpOnly: true, // Prevents client-side JavaScript from accessing the cookie (XSS protection)
       secure: process.env.NODE_ENV === "production", // Only send over HTTPS in production
       sameSite: "Lax", // Mitigates CSRF attacks (prevents sending cookie with cross-site requests unless it's a top-level navigation)
@@ -114,21 +116,20 @@ export const logout = async (req, res) => {
       .clearCookie("token", {
         httpOnly: true,
         sameSite: "strict",
-        secure: process.env.NODE_ENV === "production", 
+        secure: process.env.NODE_ENV === "production",
       })
       .json({
         message: "Logged out successfully.",
-        success: true
+        success: true,
       });
   } catch (error) {
     logger.error("Logout error", error);
     return res.status(500).json({
       success: false,
-      message: "Failed to logout"
+      message: "Failed to logout",
     });
   }
 };
-
 
 export const getUserProfile = async (req, res) => {
   try {
