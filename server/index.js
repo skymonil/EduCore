@@ -13,8 +13,10 @@ import job from "./utils/cron.js";
 import helmet from "helmet";
 import mongoSanitize from 'express-mongo-sanitize';
 import morgan from "morgan"; 
-import csrf from "csurf";
 import rateLimit from "express-rate-limit";
+import session from 'express-session';
+import { csrfSynchronisedProtection, generateToken } from "./utils/csurfConfig.js";
+import logger from './utils/logger.js';
 import compression from "compression";
 import zlib from "zlib";
 
@@ -41,13 +43,16 @@ const limiter = rateLimit({
   }
 });
 
-const csrfProtection = csrf({
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
   cookie: {
+    secure: process.env.NODE_ENV === 'production', // Use HTTPS in production
     httpOnly: true,
-    sameSite: "Lax",
-    secure: process.env.NODE_ENV === "production"
-  },
-});
+    sameSite: 'lax',
+  }
+}));
 
 app.use(csrfProtection);
 app.use(compression({
@@ -59,13 +64,18 @@ app.use(compression({
     return compression.filter(req, res);
   }
 }));
+app.use(csrfSynchronisedProtection);
+
 app.use(mongoSanitize());
 app.use(helmet());
 app.use(limiter);
 
 app.use(cors({
-    origin: ["http://localhost:5173", "https://educore-oj6e.onrender.com"],
-    credentials:true
+    origin:"http://localhost:5173",
+    credentials:true,
+     credentials: true, // Required for cookies/session
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token']
 }));
 
 app.get("/healthcheck", (req, res) => {
@@ -87,7 +97,11 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
   });
 }
- 
+ app.get('/csrf-token', (req, res) => {
+  logger.info("CSRF endpoint hit")
+  res.json({ csrfToken: req.csrfToken() });
+});
+
 app.listen(PORT, () => {
     console.log(`Server listen at port ${PORT}`);
 })
