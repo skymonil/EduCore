@@ -1,5 +1,9 @@
 # HISTORY.md
 
+# 1.3.1 / 2025-08-06
+- Added Compression 
+- added Rate Limiting to backend API
+
 # 1.3.1 / 2025-08-05
 - Bug Fix: Fixed user authentication issue  
 - Merge: Pulled latest changes from `master` branch  
