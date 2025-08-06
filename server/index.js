@@ -26,7 +26,7 @@ dotenv.config({});
 connectDB();
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const __dirname = path.resolve();
 
 // default middleware
