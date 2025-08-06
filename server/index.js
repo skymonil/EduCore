@@ -15,6 +15,9 @@ import mongoSanitize from 'express-mongo-sanitize';
 import morgan from "morgan"; 
 import csrf from "csurf";
 import rateLimit from "express-rate-limit";
+import compression from "compression";
+import zlib from "zlib";
+
 dotenv.config({});
 
 // call database connection here
@@ -29,6 +32,15 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
 
+const limiter = rateLimit({
+  windowMs: 3 * 60 * 1000, // 3 minutes
+  max: 100, // Limit each IP to 100 requests per window
+  message: {
+    status: 429,
+    error: "Too many requests, please try again later."
+  }
+});
+
 const csrfProtection = csrf({
   cookie: {
     httpOnly: true,
@@ -38,9 +50,18 @@ const csrfProtection = csrf({
 });
 
 app.use(csrfProtection);
-
+app.use(compression({
+  level: zlib.constants.Z_BEST_COMPRESSION, // Max compression
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) {
+      return false; // allow client to disable
+    }
+    return compression.filter(req, res);
+  }
+}));
 app.use(mongoSanitize());
 app.use(helmet());
+app.use(limiter);
 
 app.use(cors({
     origin: ["http://localhost:5173", "https://educore-oj6e.onrender.com"],
