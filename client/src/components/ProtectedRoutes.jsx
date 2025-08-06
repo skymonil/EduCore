@@ -9,10 +9,19 @@ export const ProtectedRoute = ({children}) => {
     const { refetch } = useLoadUserQuery();
 
     useEffect(() => {
-        // Check for token cookie on initial load
-        const token = document.cookie.split('; ').find(row => row.startsWith('token='));
-        if (token && !isAuthenticated) {
-            refetch(); // This will dispatch userLoggedIn if token is valid
+        // First check localStorage for auth state
+        const storedAuth = localStorage.getItem('auth');
+        if (storedAuth) {
+            const parsedAuth = JSON.parse(storedAuth);
+            if (parsedAuth.isAuthenticated && !isAuthenticated) {
+                refetch(); // Verify token is still valid
+            }
+        } else {
+            // Fall back to token cookie check
+            const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+            if (token && !isAuthenticated) {
+                refetch(); // This will dispatch userLoggedIn if token is valid
+            }
         }
     }, [isAuthenticated, refetch]);
 
