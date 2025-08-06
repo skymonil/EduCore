@@ -54,7 +54,7 @@ app.use(session({
   }
 }));
 
-app.use(csrfProtection);
+app.use(csrfSynchronisedProtection);
 app.use(compression({
   level: zlib.constants.Z_BEST_COMPRESSION, // Max compression
   filter: (req, res) => {
@@ -64,7 +64,6 @@ app.use(compression({
     return compression.filter(req, res);
   }
 }));
-app.use(csrfSynchronisedProtection);
 
 app.use(mongoSanitize());
 app.use(helmet());
