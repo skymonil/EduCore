@@ -1,5 +1,8 @@
 # HISTORY.md
 
+# 1.3.2 / 2025-08-07
+- Server: Implemented DB connection pooling to decrease latency, handle multiple users simultaneously
+
 # 0.1.0 / 2025-07-28
 - Server: `start` logic added in server
 - Client: `build` and `dist` folders added
