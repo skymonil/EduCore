@@ -17,19 +17,31 @@ import rateLimit from "express-rate-limit";
 import session from 'express-session';
 import { csrfSynchronisedProtection, generateToken } from "./utils/csurfConfig.js";
 import logger from './utils/logger.js';
+import compression from "compression";
+import zlib from "zlib";
+
 dotenv.config({});
 
 // call database connection here
 connectDB();
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const __dirname = path.resolve();
 
 // default middleware
 app.use(morgan('dev')); 
 app.use(express.json());
 app.use(cookieParser());
+
+const limiter = rateLimit({
+  windowMs: 3 * 60 * 1000, // 3 minutes
+  max: 100, // Limit each IP to 100 requests per window
+  message: {
+    status: 429,
+    error: "Too many requests, please try again later."
+  }
+});
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -43,9 +55,19 @@ app.use(session({
 }));
 
 app.use(csrfSynchronisedProtection);
+app.use(compression({
+  level: zlib.constants.Z_BEST_COMPRESSION, // Max compression
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) {
+      return false; // allow client to disable
+    }
+    return compression.filter(req, res);
+  }
+}));
 
 app.use(mongoSanitize());
 app.use(helmet());
+app.use(limiter);
 
 app.use(cors({
     origin:"http://localhost:5173",

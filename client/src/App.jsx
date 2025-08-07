@@ -83,13 +83,11 @@ const appRouter = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <PurchaseCourseProtectedRoute>
-            <CourseProgress />
+              <CourseProgress />
             </PurchaseCourseProtectedRoute>
           </ProtectedRoute>
         ),
       },
-
-      // admin routes start from here
       {
         path: "admin",
         element: (
@@ -126,7 +124,11 @@ const appRouter = createBrowserRouter([
       },
     ],
   },
-]);
+], {
+  future: {
+    v7_startTransition: true
+  }
+});
 
 function App() {
   return (
